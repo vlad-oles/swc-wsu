@@ -1,0 +1,39 @@
+---
+title: "Capstone"
+author: "Vlad Oles"
+date: "April 28, 2015"
+output: html_document
+---
+```{r, global_knitr_options, include = FALSE}
+library(knitr)
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.path = "../figures/firsttry_",
+                      fig.height = 5, fig.weight = 11)
+```
+
+```{r, load_libraries, results = "hide", message = FALSE, warning = FALSE}
+library(dplyr)
+library(ggplot2)
+source("functions.R")
+```
+
+```{r, load_data, results = "hide"}
+gapminder <- read.csv("../data/gapminder.csv")
+```
+
+Here is the plot for China:
+```{r, plot_china}
+plot_country("China", gapminder, "green")
+```
+
+Here is the plot for India:
+```{r, plot_india}
+plot_country("India", gapminder, "red")
+```
+
+Here is the plot for USA:
+```{r, plot_usa}
+plot_country("United States", gapminder, "blue")
+```
+
+We can quite see how GDP increases as the time goes, and this trend is suprisingly common for all the countries.
