@@ -38,8 +38,30 @@ plot_country("United States", gapminder, "blue")
 
 We can quite see how GDP increases as the time goes, and this trend is suprisingly common for all the countries.
 
-Here we can see average and extremal values for life expectancies continent-wise. Asia has the largest maximal value and at the same time second-to-smallest minimal value. Africa has the smallest in each of the aggregated values.
-```{r, life_exp_2007}
-  group_by(gapminder, continent) %>%
+```{r, life_exp_2007, include = FALSE}
+  life_exp <- group_by(gapminder, continent) %>%
     summarize(avg = mean(lifeExp), min = min(lifeExp), max = max(lifeExp))
 ```
+_Africa life expectancy:_ average - `r get_life_exp(life_exp, "Africa", "avg")`, minimal - `r get_life_exp(life_exp, "Africa", "min")`, maximal - `r get_life_exp(life_exp, "Africa", "max")`
+
+_Asia life expectancy:_ average - `r get_life_exp(life_exp, "Asia", "avg")`, minimal - `r get_life_exp(life_exp, "Asia", "min")`, maximal - `r get_life_exp(life_exp, "Asia", "max")`
+
+_Americas life expectancy:_ average - `r get_life_exp(life_exp, "Americas", "avg")`, minimal - `r get_life_exp(life_exp, "Americas", "min")`, maximal - `r get_life_exp(life_exp, "Americas", "max")`
+
+_Europe life expectancy:_ average - `r get_life_exp(life_exp, "Europe", "avg")`, minimal - `r get_life_exp(life_exp, "Europe", "min")`, maximal - `r get_life_exp(life_exp, "Europe", "max")`
+
+_Oceania life expectancy:_ average - `r get_life_exp(life_exp, "Oceania", "avg")`, minimal - `r get_life_exp(life_exp, "Oceania", "min")`, maximal - `r get_life_exp(life_exp, "Oceania", "max")`
+
+Asia has the largest maximal value and at the same time second-to-smallest minimal value. Africa has the smallest in each of the aggregated values.
+
+A histogram of global life expectancy with default bin width:
+```{r, global_life_exp}
+ggplot(gapminder, aes(x = lifeExp)) + geom_histogram(color = "black", fill = "lightblue")
+```
+
+A histogram of global life expectancy with narrower bin width:
+```{r, global_life_exp_narrow}
+ggplot(gapminder, aes(x = lifeExp)) + geom_histogram(binwidth = 1, color = "black", fill = "lightblue")
+```
+
+It seems like the first histogram has less precision, hence more countries falls under certain criterias.
