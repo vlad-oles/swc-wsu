@@ -37,3 +37,9 @@ plot_country("United States", gapminder, "blue")
 ```
 
 We can quite see how GDP increases as the time goes, and this trend is suprisingly common for all the countries.
+
+Here we can see average and extremal values for life expectancies continent-wise. Asia has the largest maximal value and at the same time second-to-smallest minimal value. Africa has the smallest in each of the aggregated values.
+```{r, life_exp_2007}
+  group_by(gapminder, continent) %>%
+    summarize(avg = mean(lifeExp), min = min(lifeExp), max = max(lifeExp))
+```
