@@ -94,3 +94,4 @@ gapminder %>%
   select(country, year, pop)
 
 write.csv(gapminder_sml, "gapminder_sml.csv")
+
