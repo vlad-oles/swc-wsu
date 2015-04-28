@@ -1,7 +1,7 @@
 # Intro to ggplot2
 
 # load ggplot2 library
-library("ggplot2")
+library(ggplot2)
 
 # load gapminder data
 gapminder <- read.csv("gapminder.csv")
